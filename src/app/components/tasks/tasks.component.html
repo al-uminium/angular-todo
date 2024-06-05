@@ -1,1 +1,26 @@
-<p>tasks works!</p>
+<h1>Todos</h1>
+<form action="#" [formGroup]="taskForm">
+  <table>
+    <tr>
+      <td>Description</td>
+      <td><textarea name="description" id="description" cols="30" rows="5" formControlName="description"></textarea></td>
+    </tr>
+    <tr>
+      <td>Priority</td>
+      <fieldset>
+        <legend>Select a priority:</legend>
+        <td>
+          @for (p of priorities; track $index) {
+            <input type="radio" [value]="p" name="priority" id="priorities" formControlName="priority">
+            <label [for]="p">{{ p }}</label>
+          }
+        </td>
+      </fieldset>
+    </tr>
+    <tr>
+      <td>Due date</td>
+      <td><input type="date" name="due-date" id="due-date" formControlName="dueDate"></td>
+    </tr>
+  </table>
+  <button [disabled]="!this.taskForm.valid" type="submit" (click)="onSubmit()">Add new to-do</button>
+</form>
