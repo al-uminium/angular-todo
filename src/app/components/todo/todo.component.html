@@ -1,1 +1,13 @@
-<p>todo works!</p>
+<h2>Tasks!</h2>
+<fieldset>
+  @for (task of listOfTasks; track $index) {
+    <div>
+      {{ task.description }}
+    </div>
+    <div>
+      <div>{{ task.priority }}</div>
+      <div>{{ task.dueDate }} </div>
+      <div><input type="checkbox" name="" [id]="task.id"></div>
+    </div>
+  }
+</fieldset>

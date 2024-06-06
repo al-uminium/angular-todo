@@ -1,26 +1,25 @@
-<h1>Todos</h1>
+<h1 class="text-5xl font-bold text-gray-800">Tasks to do...</h1>
 <form action="#" [formGroup]="taskForm">
-  <table>
-    <tr>
-      <td>Description</td>
-      <td><textarea name="description" id="description" cols="30" rows="5" formControlName="description"></textarea></td>
+  <table class="mx-2 my-5">
+    <tr class="h-10">
+      <td class="pr-4">Description:</td>
+      <td><textarea class="rounded-md border-gray-200 border-solid border-2" name="description" id="description" cols="30" rows="5" formControlName="description"></textarea></td>
     </tr>
-    <tr>
+    <tr class="h-10">
       <td>Priority</td>
-      <fieldset>
-        <legend>Select a priority:</legend>
-        <td>
-          @for (p of priorities; track $index) {
+      <td class="grid grid-cols-3 h-10">
+        @for (p of priorities; track $index) {
+          <div class="content-center">
             <input type="radio" [value]="p" name="priority" id="priorities" formControlName="priority">
             <label [for]="p">{{ p }}</label>
-          }
-        </td>
-      </fieldset>
+          </div>
+        }
+      </td>
     </tr>
-    <tr>
+    <tr class="h-10">
       <td>Due date</td>
       <td><input type="date" name="due-date" id="due-date" formControlName="dueDate"></td>
     </tr>
   </table>
-  <button [disabled]="!this.taskForm.valid" type="submit" (click)="onSubmit()">Add new to-do</button>
+  <button [disabled]="!this.taskForm.valid" type="submit" (click)="onSubmit(); addTask()">Add new to-do</button>
 </form>
