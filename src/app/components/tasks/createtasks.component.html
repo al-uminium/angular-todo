@@ -10,8 +10,8 @@
       <td class="grid grid-cols-3 h-10">
         @for (p of priorities; track $index) {
           <div class="content-center">
-            <input type="radio" [value]="p" name="priority" id="priorities" formControlName="priority">
-            <label [for]="p">{{ p }}</label>
+            <input class="" [value]="p" type="radio" name="priority" [id]="p" formControlName="priority">
+            <label class="ml-2" [for]="p">{{ p }}</label>
           </div>
         }
       </td>
@@ -21,5 +21,5 @@
       <td><input type="date" name="due-date" id="due-date" formControlName="dueDate"></td>
     </tr>
   </table>
-  <button [disabled]="!this.taskForm.valid" type="submit" (click)="onSubmit(); addTask()">Add new to-do</button>
+  <button class="rounded-md bg-blue-500 p-2 ml-2 text-white" [disabled]="!this.taskForm.valid" type="submit" (click)="onSubmit(); addTask()">Add Task</button>
 </form>

@@ -4,13 +4,13 @@ import { Task } from '../../task';
 import { TodoserviceService } from '../../services/todoservice.service';
 
 @Component({
-  selector: 'app-tasks',
+  selector: 'app-create-tasks',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './tasks.component.html',
-  styleUrl: './tasks.component.css'
+  templateUrl: './createtasks.component.html',
+  styleUrl: './createtasks.component.css'
 })
-export class TasksComponent {
+export class CreateTasksComponent {
 
   constructor(private todoSvc: TodoserviceService) {}
 

@@ -6,10 +6,16 @@ import { Task } from '../task';
   providedIn: 'root'
 })
 export class TodoserviceService {
-  private data = new Subject<Task>; 
+  private data = new Subject<Task>;
+  private id = new Subject<string>; 
   data$ = this.data.asObservable();
-  
+  id$ = this.id.asObservable();
+
   setData(data: Task) {
     this.data.next(data);
+  }
+
+  setId(id: string) {
+    this.id.next(id);
   }
 }

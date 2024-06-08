@@ -1,13 +1,30 @@
-<h2>Tasks!</h2>
-<fieldset>
-  @for (task of listOfTasks; track $index) {
-    <div>
-      {{ task.description }}
-    </div>
-    <div>
-      <div>{{ task.priority }}</div>
-      <div>{{ task.dueDate }} </div>
-      <div><input type="checkbox" name="" [id]="task.id"></div>
-    </div>
-  }
-</fieldset>
+
+@if (listOfTasks.length>0) {
+  <h2 class="text-4xl font-bold pt-5 mt-3 mx-3 border-solid border-t-2">You have tasks to do!</h2>
+  <div class="border-solid border-2 rounded  p-5 m-5 mt-3">
+    @for (task of listOfTasks; track $index) {
+      <div class="text-base">
+        {{ task.description }}
+      </div>
+      @if (listOfTasks.length == $index-1) {
+        <div class="grid grid-cols-3 items-center text-sm text-slate-500 border-solid border-b-2 pb-2">
+          <div>{{ task.priority }}</div>
+          <div>Due on {{ task.dueDate.toLocaleDateString() }} </div>
+          <div>
+            <input type="checkbox" value="done" name="checkbox" [id]="task.id">
+            <label class="pl-2" [for]="task.id">Completed</label>
+          </div>
+        </div>
+      } @else {
+        <div class="grid grid-cols-3 items-center text-sm text-slate-500">
+          <div>{{ task.priority }}</div>
+          <div>Due on {{ task.dueDate.toLocaleDateString() }} </div>
+          <div>
+            <input type="checkbox" value="done" name="checkbox" [id]="task.id" (click)="handleOnClick($event)">
+            <label class="pl-2" [for]="task.id">Completed</label>
+          </div>
+        </div>
+      }
+    }
+  </div>
+}

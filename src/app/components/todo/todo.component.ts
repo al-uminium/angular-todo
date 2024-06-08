@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Task } from '../../task';
+import { TodoserviceService } from '../../services/todoservice.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-todo',
@@ -8,8 +10,19 @@ import { Task } from '../../task';
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css'
 })
-export class TodoComponent {
+export class TodoComponent implements OnDestroy{
   @Input() listOfTasks!: Task[];
 
-  
+  selectedId!: string;
+
+  constructor(private todoIdSvc: TodoserviceService) {}
+
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
+
+  handleOnClick(e: any) {
+    this.selectedId = e.target.id;
+    this.todoIdSvc.setId(this.selectedId);
+  }
 }
